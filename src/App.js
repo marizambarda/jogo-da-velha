@@ -125,7 +125,7 @@ function App() {
 				</Row>
 			</div>
 			<div className="rodape">
-				<a href="#" target="_blank">
+				<a href="https://marianazambarda.com/" target="_blank">
 					<p>Desenvolvido por: Mariana Zambarda</p>
 				</a>
 			</div>
