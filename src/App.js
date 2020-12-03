@@ -126,7 +126,11 @@ function App() {
 			</div>
 			<div className="rodape">
 				<a href="https://marianazambarda.com/" target="_blank">
-					<p>Desenvolvido por: Mariana Zambarda</p>
+					Desenvolvido por: Mariana Zambarda
+				</a>{' '}
+				-{' '}
+				<a href="https://github.com/marizambarda/jogo-da-velha" target="_blank">
+					Código fonte no GitHub
 				</a>
 			</div>
 		</Container>
