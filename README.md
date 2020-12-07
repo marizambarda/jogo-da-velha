@@ -30,17 +30,16 @@ O jogo da velha é composto por um único componente (App).
 
 - `tabuleiro`: o tabuleiro é uma array de 9 posições, onde cada índice representa uma casa no tabuleiro, os índices vão de 0 (zero) a 8 (oito) , sendo zero a casa superior mais a esquerda e 8 a casa inferior mais a direita.  
 - `jogadorDaVez`:  o jogador da vez pode ser representado por “X” ou “O”.
-- Placar:  o placar é composto por 3 estados: 
-  - `placarX` 
-  - `placarO` 
-  - `empates`. 
-- No placar é somado 1 ponto para o jogador que ganhou ou somado 1 ponto nos empates caso não haver ganhador.
-- Empate: no empate é realizado um loop onde verifica-se se o tabuleiro é vazio, enquanto não forem preenchidas todas as casas do tabuleiro e não houver nenhum ganhador o jogo continua. Quando todas as casas forem preenchidas e não foi verificado ganhador, o empate ocorre e soma no Placar `empates` 1 ponto.
-         
+- `placarX`: pontos do jogador X
+- `placarO`: pontos do jogador O
+- `empates`: quantidade de empates
+
 ### Lógica do jogo
-- Ao clicar em uma casa do tabuleiro, é chamada a função`jogou` que executa as seguintes regras:
-1. Verifica se a casa já está ocupada, verificando o estado tabuleiro no índice clicado. Caso já esteja ocupado, para por aqui.
-2. Modifica o tabuleiro, preenchendo o índice clicado com o jogador da vez, que está armazenado em um estado.
-3. Alterna o jogador “X” para “O”ou vice-versa.
-4. Verifica se um dos jogadores ganhou, caso tenha ganhado soma um ponto para o ganhador. Limpa o tabuleiro.
-5. Caso não tenha ganhado verifica se há empate, quando o tabuleiro esta completamente preenchido.  Se há empate é somado um ponto no placar “Empate”.
+
+Ao clicar em uma casa do tabuleiro, é chamada a função `jogou` que executa as seguintes regras:
+
+1. Verifica se a casa já está ocupada, lendo o estado `tabuleiro` no índice clicado. Caso já esteja ocupado, para por aqui.
+2. Modifica o `tabuleiro`, preenchendo o índice clicado com o jogador da vez, que está armazenado em um estado (`jogadorDaVez`).
+3. Alterna o `jogadorDaVez` de “X” para “O” ou vice-versa.
+4. Verifica se um dos jogadores ganhou, caso tenha ganhado soma um ponto para o ganhador alterando o estado `placarX` ou `placarO`. Limpa o `tabuleiro`.
+5. Caso não tenha ganhado verifica se há empate, que é quando o tabuleiro esta completamente preenchido. Se há empate é somado um ponto ao estado `empates`.
