@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Jogo da Velha
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Um jogo da velha desenvolvido com React.
 
-## Available Scripts
+## Como instalar
 
-In the project directory, you can run:
+### Dependências
 
-### `npm start`
+Antes de instalar o projeto, você precisa ter as seguintes dependências instaladas no seu computador:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- node.js v12.18.3 
+- git
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Instruções
 
-### `npm test`
+- Baixar repositório (`git clone https://github.com/marizambarda/jogo-da-velha.git`)
+- Rodar `npm install`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Como executar
 
-### `npm run build`
+Na pasta do projeto, execute `npm start`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Como funciona
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Estados
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O jogo da velha é composto por um único componente (App).
 
-### `npm run eject`
+É composto pelos estados:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `tabuleiro`: o tabuleiro é uma array de 9 posições, onde cada índice representa uma casa no tabuleiro, os índices vão de 0 (zero) a 8 (oito) , sendo zero a casa superior mais a esquerda e 8 a casa inferior mais a direita.  
+- `jogadorDaVez`:  o jogador da vez pode ser representado por “X” ou “O”.
+- Placar:  o placar é composto por 3 estados: 
+  - `placarX` 
+  - `placarO` 
+  - `empates`. 
+- No placar é somado 1 ponto para o jogador que ganhou ou somado 1 ponto nos empates caso não haver ganhador.
+- Empate: no empate é realizado um loop onde verifica-se se o tabuleiro é vazio, enquanto não forem preenchidas todas as casas do tabuleiro e não houver nenhum ganhador o jogo continua. Quando todas as casas forem preenchidas e não foi verificado ganhador, o empate ocorre e soma no Placar `empates` 1 ponto.
+         
+### Lógica do jogo
+- Ao clicar em uma casa do tabuleiro, é chamada a função`jogou` que executa as seguintes regras:
+1. Verifica se a casa já está ocupada, verificando o estado tabuleiro no índice clicado. Caso já esteja ocupado, para por aqui.
+2. Modifica o tabuleiro, preenchendo o índice clicado com o jogador da vez, que está armazenado em um estado.
+3. Alterna o jogador “X” para “O”ou vice-versa.
+4. Verifica se um dos jogadores ganhou, caso tenha ganhado soma um ponto para o ganhador. Limpa o tabuleiro.
+5. Caso não tenha ganhado verifica se há empate, quando o tabuleiro esta completamente preenchido.  Se há empate é somado um ponto no placar “Empate”.
